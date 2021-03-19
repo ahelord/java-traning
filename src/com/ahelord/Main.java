@@ -1,5 +1,4 @@
 package com.ahelord;
-
 public class Main {
 
     public static void main(String[] args) {
