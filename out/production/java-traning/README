@@ -1,0 +1,13 @@
+Notion https://www.notion.so/Oracle-Java-SE-11-015fdb162b794e0ca6530e8afbb41a38
+
+Temas
+1. Explicar Origines de java y ecosistema
+2. Estructura de un programa tipico de Java
+3. Explorar el pensamiento para diseñar java
+4. Describir API Comunes de Java (JDK)
+5. Explicar el uso de Java en las empresas
+
+
+-- Compilar clases
+
+E:\openjdk-15.0.1_windows-x64_bin\jdk-15.0.1\bin\javac.exe -cp .\src\ -d .\classes .\src\com\ahelord\herenciaTest\Main.java
