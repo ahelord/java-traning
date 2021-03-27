@@ -73,5 +73,15 @@ public class Main {
         System.out.println(String.format("a: %s", a));
         System.out.println(String.format("c: %s",c));
 
+        // operaciones aritmenticas y conversion de tipo (type casting)
+        byte myByteTwo = 127, myByteThree = 5;
+        byte e = (byte) (a+b); // e es -124 cuando llena la capacidad de byte vuelve a iniciar
+        // se puede hacer operaciones con char ya que son numeros son de 16 bits
+        int myintTwo  =  a/b; // es 25 y no flotante por que le hago casting con el tipo
+        float myFloatTwo = (float) a / b; // con algunos de los dos participantes que sea float se promueve a float y da 25.04
+        char myCharTwo = 'x';
+        char myCharThree = ++myCharTwo;
+        System.out.println(myCharThree);
+
     }
 }
