@@ -12,7 +12,7 @@ public class Main {
         double myDouble = 3.7976931348623157E+307D;
         // Boolean
         boolean myBoolean = false;
-        // Caracteres
+        // Caracteres se pueden declarar como ASCII o como unicode
         char myChar = 'z';
         // Los valores numericos pueden ser representados como binarios, octetos, decimales y hexadecimales
         int myBinary = 0b101010;
@@ -78,10 +78,32 @@ public class Main {
         byte e = (byte) (a+b); // e es -124 cuando llena la capacidad de byte vuelve a iniciar
         // se puede hacer operaciones con char ya que son numeros son de 16 bits
         int myintTwo  =  a/b; // es 25 y no flotante por que le hago casting con el tipo
+        char a1 = 'a';
         float myFloatTwo = (float) a / b; // con algunos de los dos participantes que sea float se promueve a float y da 25.04
         char myCharTwo = 'x';
         char myCharThree = ++myCharTwo;
         System.out.println(myCharThree);
+        System.out.println(Integer.toOctalString(a1));
+        System.out.println(Integer.toHexString(a1));
+        char someChart = 'a';
+        char nextChar = (char) (someChart+1);
+        System.out.println(nextChar);
+        System.out.println(--someChart);
+        System.out.println(--someChart);
+        System.out.println(--someChart);
+        System.out.println(--someChart);
+        System.out.println(--someChart);
+        System.out.println(--someChart);
+        System.out.println(--someChart);
+        System.out.println(--someChart);
+        System.out.println(--someChart);
+        // como saber a que distancia este uno del otro
+        char myLetterLower = 'b', myLetterMayus = 'B';
+        int distance = myLetterLower - myLetterMayus;
+        System.out.println("Distance "+distance);
+        // para volver una variable mayuscula se deben restar 32 posiciones
+        char upperSomeChar = (char) (myLetterLower-distance);
+        System.out.println("some upper chart"+upperSomeChar);
 
     }
 }

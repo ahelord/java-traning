@@ -22,3 +22,20 @@ E:\openjdk-15.0.1_windows-x64_bin\jdk-15.0.1\bin\java.exe .\src\com\ahelord\Main
 
 -- Para generar la documentacion En la carpeta src
 E:\openjdk-15.0.1_windows-x64_bin\jdk-15.0.1\bin\javadoc com.ahelord.herenciaTest com.ahelord.animals com.ahelord.people -d .\docs
+
+-- Correr jshell
+E:\openjdk-15.0.1_windows-x64_bin\jdk-15.0.1\bin\jshell
+
+    -- comandos
+    jshell> int x =1
+    x ==> 1
+
+    jshell> int y = 1
+    y ==> 1
+
+    jshell> x+y
+    $3 ==> 2
+
+    jshell> /exit
+    |  Goodbye
+
