@@ -34,5 +34,13 @@ public class Main {
         Duration twoHours = Duration.ofHours(2);
         System.out.println(twoHours);
 
+        ZoneId london = ZoneId.of("Europe/London");
+        ZoneId la = ZoneId.of("UTC-05:00");
+        LocalDateTime now = LocalDateTime.of(2019,Month.APRIL,21,07,14);
+        ZonedDateTime londonTime = ZonedDateTime.of(now,london);
+        System.out.println(londonTime);
+        ZonedDateTime laTime = londonTime.withZoneSameInstant(la);
+        System.out.println(laTime);
+
     }
 }
