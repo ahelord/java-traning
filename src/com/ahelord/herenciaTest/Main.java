@@ -8,5 +8,13 @@ public class Main {
        Esto es una prueba de herencia
          */
         System.out.println(myDog.getWeight()+myDog.giveMeBall());
+
+  /*      public String toString() {
+            return getClass().getName() + "@" + Integer.toHexString(hashCode());
+        }*/
+
+        System.out.println(myDog.toString());
+        System.out.println(myDog instanceof Animal);
+
     }
 }
