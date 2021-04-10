@@ -18,5 +18,9 @@ public class Main {
         System.out.println(myDog.toString());
         System.out.println(myDog instanceof Animal);
 
+        // -----------------
+        Boss myBoss = (Boss) ProfileTypeFactory.createProfile(ProfileType.BOSS);
+        myBoss.iamAlive();
+
     }
 }
