@@ -8,6 +8,10 @@ package com.ahelord.herenciaTest;
 
 public class Dog extends Animal {
 
+    public Dog(int weight) {
+        super(weight);
+    }
+
     /**
      * @author leonardo rodriguez
      * Method with {@link java.lang.String String}
@@ -16,6 +20,6 @@ public class Dog extends Animal {
      * @return devuelve el texto de la mascota
      */
     public String giveMeBall() {
-        return "woof";
+        return "woof and my weight is "+super.weight;
     }
 }
