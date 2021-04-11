@@ -1,6 +1,6 @@
 package com.ahelord.interfaces;
 
-public class Hamster implements Pet,Domestic{
+public class Hamster implements Pet,Domestic,Comparable<Animal>,Cloneable,Adoption<Hamster>{
 
     private String name;
     private int weight;
@@ -36,5 +36,15 @@ public class Hamster implements Pet,Domestic{
     @Override
     public String getGroup() {
         return "mammals";
+    }
+
+    @Override
+    public int compareTo(Animal o) {
+        return this.name.compareTo(o.toString());
+    }
+
+    @Override
+    public boolean canBeAdopted(Hamster animal) {
+        return canLiveInRoom();
     }
 }

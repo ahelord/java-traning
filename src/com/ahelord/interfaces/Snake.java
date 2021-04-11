@@ -1,6 +1,6 @@
 package com.ahelord.interfaces;
 
-public class Snake implements Pet,Wild{
+public class Snake implements Pet,Wild,Adoption<Snake>{
     private String name;
     private int weight;
 
@@ -35,5 +35,10 @@ public class Snake implements Pet,Wild{
     @Override
     public String getGroup() {
         return "reptile";
+    }
+
+    @Override
+    public boolean canBeAdopted(Snake animal) {
+        return !attackHumnas();
     }
 }
