@@ -4,8 +4,10 @@ import java.time.LocalDateTime;
 import java.time.Period;
 
 public class Product {
-	
-	// constante compartida
+
+
+
+    // constante compartida
     private String name;
     private int amount;
     public static int countCreations = 0;
@@ -55,7 +57,13 @@ public class Product {
     public Product(String name){
         this.name = name;
     }
+    public String getName() {
+        return name;
+    }
 
+    public int getAmount() {
+        return amount;
+    }
     public BigDecimal getPrice() {
         return price;
     }
