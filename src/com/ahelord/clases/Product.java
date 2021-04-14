@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Period;
 
-public class Product {
+public class Product implements Comparable<Product>{
 
 
 
@@ -109,5 +109,10 @@ public class Product {
  
     public void printVarArg (String first,String... myStrings){
         System.out.println(first+myStrings[0]+myStrings[1]);
+    }
+
+    @Override
+    public int compareTo(Product o) {
+        return 0;
     }
 }
