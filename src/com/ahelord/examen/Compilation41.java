@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Compilation41 {
     public static void main(String[] args) {
+
         var var = 10;
         //var double = 10.0f;
 

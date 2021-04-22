@@ -24,6 +24,7 @@ package com.ahelord.examen;
     }
 }
 
+
 /* interface TestInterface5 {
     double taxRate = 0.05;
     default void increaseTax() {
