@@ -39,3 +39,7 @@ E:\openjdk-15.0.1_windows-x64_bin\jdk-15.0.1\bin\jshell
     jshell> /exit
     |  Goodbye
 
+
+
+mvn exec:java -D exec.mainClass=com.ahelord.jdbctest.Main
+java -jar target/TestAPIFactory-1.0-SNAPSHOT.jar com.mycompany.testapifactory.Main

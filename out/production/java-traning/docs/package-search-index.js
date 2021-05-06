@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.ahelord.animals"},{"l":"com.ahelord.herenciaTest"},{"l":"com.ahelord.people"}];updateSearchResults();
