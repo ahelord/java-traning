@@ -58,7 +58,7 @@ public class Main {
         OptionalDouble average = ordersTwo.stream().flatMap(order -> order.getProductsStream()).mapToDouble(value -> value.getAmount()).average();
         System.out.println(average.isPresent() ? average.getAsDouble() : 0);
         // Reduce
-        Optional<String> souts = list.stream().map(nameMapper).reduce((s, s2) -> s+""+s2);
+        Optional<String> souts = list.stream().map(nameMapper).reduce((s, s2) -> s+"reduce"+s2);
         System.out.println(souts.isPresent()?souts.get():"no data");
 
         // Collectors
