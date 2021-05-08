@@ -2,4 +2,4 @@
 .project
 out/
 .idea/
-src/aplication.properties
+/src/aplication.properties
