@@ -4,3 +4,4 @@ out/
 .idea/
 src/aplication.properties
 target/
+.settings/
