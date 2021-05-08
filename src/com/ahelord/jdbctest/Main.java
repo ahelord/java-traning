@@ -1,10 +1,14 @@
 package com.ahelord.jdbctest;
 
+import utils.ConnectionSQL;
+
+import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException {
+
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -22,7 +26,8 @@ public class Main {
 
             Connection connection = null;
             connection = DriverManager.getConnection(url, props);
-
+            ConnectionSQL connectionSQL = new ConnectionSQL();
+            Connection connectionWithUtil = connectionSQL.getConnection();
 
             System.out.println("Java JDBC PostgreSQL Example");
             // When this class first attempts to establish a connection, it automatically loads any JDBC 4.0 drivers found within
@@ -49,7 +54,7 @@ public class Main {
         } /*catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC driver not found.");
             e.printStackTrace();
-        }*/ catch (SQLException e) {
+        }*/ catch (SQLException | IOException e) {
             System.out.println("Connection failure.");
             e.printStackTrace();
         }
