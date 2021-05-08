@@ -9,9 +9,17 @@ public class Main {
         try {
             Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://localhost:5433/booklickdb-dev-content?currentSchema=public";
+            // connect mac
+            //            String url = "jdbc:postgresql://localhost:5432/booklickdb-dev-content?currentSchema=public";
+
             Properties props = new Properties();
+            // connect mac
+            //props.setProperty("user","adminchecklemon");
+            // props.setProperty("password","fitpal");
+
             props.setProperty("user","booklickdb");
             props.setProperty("password","b00kl1ck2017");
+
             Connection connection = null;
             connection = DriverManager.getConnection(url, props);
 
@@ -22,12 +30,21 @@ public class Main {
 //          Class.forName("org.postgresql.Driver");
 
             System.out.println("Connected to PostgreSQL database!");
-            Statement statement = connection.createStatement();
+            Statement statementSelectUsers = connection.createStatement();
+            Statement statementUpdate= connection.createStatement();
+
             System.out.println("Reading user records...");
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM public.user");
+            ResultSet resultSet = statementSelectUsers.executeQuery("SELECT * FROM public.user");
+            int resultSetTwo = statementUpdate.executeUpdate("UPDATE public.booklist SET \"isPublic\"=true");
+            System.out.println("row affected "+resultSetTwo);
+
             while (resultSet.next()) {
                 System.out.println( resultSet.getString("email"));
             }
+            statementSelectUsers.close();
+            statementUpdate.close();
+            resultSet.close();
+            connection.close();
 
         } /*catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC driver not found.");
