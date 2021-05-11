@@ -29,6 +29,12 @@ public class Main {
             ConnectionSQL connectionSQL = new ConnectionSQL();
             Connection connectionWithUtil = connectionSQL.getConnection();
 
+
+            UserRepository userRepository = new UserRepository();
+            for (User user:userRepository.findAllUsers()) {
+                System.out.println(user.toString());
+            }
+
             System.out.println("Java JDBC PostgreSQL Example");
             // When this class first attempts to establish a connection, it automatically loads any JDBC 4.0 drivers found within
             // the class path. Note that your application must manually load any JDBC drivers prior to version 4.0.
