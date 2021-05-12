@@ -12,7 +12,9 @@ import java.util.List;
 
 public class UserRepository {
     private static final String SQL_SELECT = "SELECT email FROM public.user";
-    public List<User> findAllUsers() throws IOException, SQLException {
+    private static final String SQL_INSERT = "INSERT INTO public.user(email) values (?)";
+
+    public List<User> findAll() throws IOException, SQLException {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -28,5 +30,15 @@ public class UserRepository {
         resultSet.close();
         connection.close();
         return users;
+    }
+    public boolean inserted(User user) throws IOException, SQLException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        connection = new ConnectionSQL().getConnection();
+        statement = connection.prepareStatement(SQL_INSERT);
+        statement.setString(1,user.getEmail());
+       return 0 < statement.executeUpdate();
+
     }
 }

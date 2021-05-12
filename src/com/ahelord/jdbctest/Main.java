@@ -21,8 +21,8 @@ public class Main {
             //props.setProperty("user","adminchecklemon");
             // props.setProperty("password","fitpal");
 
-            props.setProperty("user","booklickdb");
-            props.setProperty("password","b00kl1ck2017");
+            props.setProperty("user", "booklickdb");
+            props.setProperty("password", "b00kl1ck2017");
 
             Connection connection = null;
             connection = DriverManager.getConnection(url, props);
@@ -31,9 +31,12 @@ public class Main {
 
 
             UserRepository userRepository = new UserRepository();
-            for (User user:userRepository.findAllUsers()) {
+            for (User user : userRepository.findAll()) {
                 System.out.println(user.toString());
             }
+            User user = new User("jshelby@example.co");
+            System.out.println("is inserted "+userRepository.inserted(user));
+
 
             System.out.println("Java JDBC PostgreSQL Example");
             // When this class first attempts to establish a connection, it automatically loads any JDBC 4.0 drivers found within
@@ -42,15 +45,15 @@ public class Main {
 
             System.out.println("Connected to PostgreSQL database!");
             Statement statementSelectUsers = connection.createStatement();
-            Statement statementUpdate= connection.createStatement();
+            Statement statementUpdate = connection.createStatement();
 
             System.out.println("Reading user records...");
             ResultSet resultSet = statementSelectUsers.executeQuery("SELECT * FROM public.user");
             int resultSetTwo = statementUpdate.executeUpdate("UPDATE public.booklist SET \"isPublic\"=true");
-            System.out.println("row affected "+resultSetTwo);
+            //System.out.println("row affected "+resultSetTwo);
 
             while (resultSet.next()) {
-                System.out.println( resultSet.getString("email"));
+                //System.out.println( resultSet.getString("email"));
             }
             statementSelectUsers.close();
             statementUpdate.close();
@@ -65,6 +68,6 @@ public class Main {
             e.printStackTrace();
         }
     }
-    }
+}
 
 
