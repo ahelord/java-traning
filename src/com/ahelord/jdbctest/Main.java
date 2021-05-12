@@ -2,7 +2,9 @@ package com.ahelord.jdbctest;
 
 import utils.ConnectionSQL;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
@@ -12,20 +14,21 @@ public class Main {
 
         try {
             Class.forName("org.postgresql.Driver");
-            String url = "jdbc:postgresql://localhost:5433/booklickdb-dev-content?currentSchema=public";
+            InputStream input = new FileInputStream(System.getProperty("user.dir") + "/src/aplication.properties");
+            Properties props = new Properties();
+            props.load(input);
+
             // connect mac
             //            String url = "jdbc:postgresql://localhost:5432/booklickdb-dev-content?currentSchema=public";
 
-            Properties props = new Properties();
+
             // connect mac
             //props.setProperty("user","adminchecklemon");
             // props.setProperty("password","fitpal");
 
-            props.setProperty("user", "booklickdb");
-            props.setProperty("password", "b00kl1ck2017");
-
+            System.out.println(props);
             Connection connection = null;
-            connection = DriverManager.getConnection(url, props);
+            connection = DriverManager.getConnection(props.getProperty("POSTGRES_URL").toString(),props.getProperty("POSTGRES_USER").toString(),props.getProperty("POSTRGES_PASSWORD").toString());
             ConnectionSQL connectionSQL = new ConnectionSQL();
             Connection connectionWithUtil = connectionSQL.getConnection();
 
@@ -34,7 +37,7 @@ public class Main {
             for (User user : userRepository.findAll()) {
                 System.out.println(user.toString());
             }
-            User user = new User("jshelby@example.co");
+            User user = new User("jshelby1@example.co");
             System.out.println("is inserted "+userRepository.inserted(user));
 
 
