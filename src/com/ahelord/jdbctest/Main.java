@@ -37,8 +37,11 @@ public class Main {
             for (User user : userRepository.findAll()) {
                 System.out.println(user.toString());
             }
-            User user = new User("jshelby1@example.co");
+            User user = new User("jshelby2@example.co");
             System.out.println("is inserted "+userRepository.inserted(user));
+            System.out.println("is updated "+userRepository.updated(user));
+            System.out.println("is deleted "+userRepository.deleted(user));
+
 
 
             System.out.println("Java JDBC PostgreSQL Example");
