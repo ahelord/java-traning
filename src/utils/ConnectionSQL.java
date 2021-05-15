@@ -11,7 +11,7 @@ public class ConnectionSQL {
     private String POSTGRES_URL;
     private String POSTGRES_USER;
     private String POSTGRES_PASSWORD;
-
+    private Connection connection;
     public ConnectionSQL() throws IOException {
 
         try (InputStream input = new FileInputStream(System.getProperty("user.dir") + "/src/aplication.properties")) {
@@ -25,13 +25,13 @@ public class ConnectionSQL {
             this.POSTGRES_URL = prop.getProperty("POSTGRES_URL");
             this.POSTGRES_USER = prop.getProperty("POSTGRES_USER");
             this.POSTGRES_PASSWORD = prop.getProperty("POSTRGES_PASSWORD");
-
-        } catch (IOException ex) {
+                this.connection = DriverManager.getConnection(this.POSTGRES_URL,this.POSTGRES_USER,this.POSTGRES_PASSWORD);
+        } catch (IOException | SQLException ex) {
             ex.printStackTrace();
         }
-    }
+}
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(this.POSTGRES_URL,this.POSTGRES_USER,this.POSTGRES_PASSWORD);
+        return this.connection;
     }
     public void close(ResultSet resultSet) throws SQLException {
         resultSet.close();

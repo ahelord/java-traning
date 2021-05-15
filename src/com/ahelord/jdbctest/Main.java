@@ -13,6 +13,41 @@ public class Main {
 
 
         try {
+
+            // Connection with repository without transaction
+            UserRepository userRepository = new UserRepository();
+            for (User user : userRepository.findAll()) {
+                System.out.println(user.toString());
+            }
+            User user = new User("jshelby2@example.co");
+            System.out.println("is inserted " + userRepository.inserted(user));
+            System.out.println("is updated " + userRepository.updated("jshelby2@example.co", "jshelby2@example.co"));
+            System.out.println("is deleted " + userRepository.deleted("jshelby2@example.co"));
+
+
+            // connection with repository and transaction START
+            ConnectionSQL transactionConnection = new ConnectionSQL();
+            try {
+
+                transactionConnection.getConnection().setAutoCommit(false);
+                System.out.println("autocommit  " + transactionConnection.getConnection().getAutoCommit());
+                UserRepository userRepositoryTwo = new UserRepository(transactionConnection.getConnection());
+                userRepositoryTwo.inserted(new User("ashelby@example.com"));
+                userRepositoryTwo.updated("ashelby@example.com", "ashelby@example.com");
+                userRepositoryTwo.deleted("ashelby@example.com");
+                transactionConnection.getConnection().commit();
+
+            } catch (SQLException e) {
+                System.out.println("Rollback");
+                e.printStackTrace(System.out);
+                transactionConnection.getConnection().rollback();
+            }
+
+
+            // connection with repository and transaction END
+
+
+            // Connection without Repository START
             Class.forName("org.postgresql.Driver");
             InputStream input = new FileInputStream(System.getProperty("user.dir") + "/src/aplication.properties");
             Properties props = new Properties();
@@ -28,20 +63,9 @@ public class Main {
 
             System.out.println(props);
             Connection connection = null;
-            connection = DriverManager.getConnection(props.getProperty("POSTGRES_URL").toString(),props.getProperty("POSTGRES_USER").toString(),props.getProperty("POSTRGES_PASSWORD").toString());
+            connection = DriverManager.getConnection(props.getProperty("POSTGRES_URL").toString(), props.getProperty("POSTGRES_USER").toString(), props.getProperty("POSTRGES_PASSWORD").toString());
             ConnectionSQL connectionSQL = new ConnectionSQL();
             Connection connectionWithUtil = connectionSQL.getConnection();
-
-
-            UserRepository userRepository = new UserRepository();
-            for (User user : userRepository.findAll()) {
-                System.out.println(user.toString());
-            }
-            User user = new User("jshelby2@example.co");
-            System.out.println("is inserted "+userRepository.inserted(user));
-            System.out.println("is updated "+userRepository.updated(user));
-            System.out.println("is deleted "+userRepository.deleted(user));
-
 
 
             System.out.println("Java JDBC PostgreSQL Example");
@@ -65,6 +89,9 @@ public class Main {
             statementUpdate.close();
             resultSet.close();
             connection.close();
+
+            // Connection without Repository END
+
 
         } /*catch (ClassNotFoundException e) {
             System.out.println("PostgreSQL JDBC driver not found.");
