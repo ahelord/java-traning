@@ -1,6 +1,7 @@
 package com.ahelord.jdbctest;
 
 import utils.ConnectionSQL;
+import utils.ConnectionPoolSQL;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class Main {
 
 
             // connection with repository and transaction START
-            ConnectionSQL transactionConnection = new ConnectionSQL();
+            ConnectionPoolSQL transactionConnection = new ConnectionPoolSQL();
             try {
 
                 transactionConnection.getConnection().setAutoCommit(false);
